@@ -124,7 +124,8 @@ def main():
 
 
         config = expand_env(args.config)
-        config['customer_ids'] = [''.join(i for i in id if i.isdigit()) for id in config['customer_ids']]
+        customer_ids = config['customer_ids'].split(',')
+        config['customer_ids'] = [''.join(i for i in id if i.isdigit()) for id in customer_ids]
         config['login_customer_id'] = ''.join(i for i in config['login_customer_id'] if i.isdigit())
         config['start_date'] = config['start_date'][:10]
         sync(config, args.state, catalog)
