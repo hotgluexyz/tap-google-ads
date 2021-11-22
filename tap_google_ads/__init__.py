@@ -122,8 +122,12 @@ def main():
         else:
             catalog = discover()
 
-        args.config = expand_env(args.config)
-        sync(args.config, args.state, catalog)
+
+        config = expand_env(args.config)
+        config['customer_ids'] = [''.join(i for i in id if i.isdigit()) for id in config['customer_ids']]
+        config['login_customer_id'] = ''.join(i for i in config['login_customer_id'] if i.isdigit())
+        config['start_date'] = config['start_date'][:10]
+        sync(config, args.state, catalog)
 
 
 if __name__ == "__main__":
