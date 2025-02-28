@@ -1,3 +1,6 @@
+# This Tap is deprecated in Favor of https://github.com/hotgluexyz/tap-googleads
+
+
 # tap-google-ads
 
 This is a [Singer][1] tap that produces JSON-formatted data following the [Singer spec][2].
